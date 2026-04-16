@@ -29,7 +29,7 @@
                         <div>
                             <h2 class="text-2xl font-bold text-amber-800 mb-4 border-b border-amber-200 pb-2">Información de la Empresa</h2>
                             <ul class="space-y-3 text-gray-700">
-                                <li><strong class="text-amber-900">Titular:</strong> Maximiliano Barreiro</li>
+                                <li><strong class="text-amber-900">Titulares:</strong> Maximiliano Barreiro y Demarchi Luana</li>
                                 <li><strong class="text-amber-900">Razón Social:</strong> Pastelería Revé S.R.L.</li>
                                 <li><strong class="text-amber-900">Domicilio Legal:</strong> Av. 3 de abril 546</li>
                                 <li><strong class="text-amber-900">CUIT:</strong> 30-12345678-9</li>
