@@ -1,0 +1,734 @@
+/*==================================================
+=                ESTILOS GENERALES                 =
+==================================================*/
+body {
+    margin: 0; 
+}
+
+/*==================================================
+=                 PAGINA PRINCIPAL                 =
+==================================================*/
+
+.hero {
+    height: 100vh; 
+    background-size: cover; /* Ajusta la imagen para que cubra todo el espacio sin estirarse */
+    background-position: center; 
+    transition: background-image 1s ease-in-out; /* Controla la suavidad del cambio de fotos */
+    display: flex; /* Activa el modo caja flexible para alinear el contenido interno */
+    justify-content: flex-start; 
+    align-items: center; 
+    padding-left: 40px; /* Espacio entre el borde izquierdo y el texto */
+}
+.hero-productos{
+    padding-top: 50px;
+    margin-top: 180px;
+    height: 70vh;
+   
+    background-image: url('/img/fondoProductos.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.overlay-productos{
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0,0,0,0.25);
+}
+
+
+.titulo-hero-productos{
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.btn-pedido {
+    display: inline-block; /* Para que actúe como botón y use los márgenes */
+    padding: 10px 28px;    /* Espacio interno (Arriba/Abajo , Lados) */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente blanquecino (como la img 4) */
+    backdrop-filter: blur(5px); /* Efecto vidrio esmerilado */
+    -webkit-backdrop-filter: blur(5px);
+    /* Bordes redondeados */
+    border-radius: 8px;     /* Ajusta este valor si lo quieres más o menos redondo */
+    border: 1px solid rgba(255, 255, 255, 0.4);          /* Sin borde sólido */
+    
+    /* Estilo de Texto */
+    color: white;          /* Color de letra */
+    font-family: 'Montserrat', sans-serif; /* Usamos una fuente limpia */
+    font-weight: 400;
+    font-size: 12px;       /* Tamaño de fuente */
+    text-decoration: none; /* Quitamos el subrayado */
+    text-transform: uppercase; /* Forzamos mayúsculas */
+    letter-spacing: 2px;   /* Un poco de espacio elegante */
+    
+    /* Espaciado y Transiciones */
+    margin-top: 5px;      /* Espacio entre el H1 ReVe y el botón */
+    transition: all 0.3s ease; /* Transición suave para el hover */
+    
+    /* Aseguramos que esté por encima de la capa oscura */
+    position: relative;
+    z-index: 2;
+}
+
+/* Efecto Hover (cuando pasas el mouse por encima) */
+.btn-pedido:hover {
+    background-color: rgba(250, 250, 250); 
+    color: black;/* Se vuelve un poco más opaco */
+    transform: translateY(-2px);    
+    border-color: white;                 /* El borde se funde con el fondo */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2)           /* Un pequeño efecto de levantamiento */
+}
+/* TEXTO PRINCIPAL (H1) DENTRO DEL HERO */
+.contenido h1 {
+    font-family: 'Cinzel', sans-serif;
+    font-weight: 300;
+    font-size: 120px; /* Tamaño de la palabra ReVe en el fondo */
+    letter-spacing: 5px;
+    color: rgb(255, 255, 255);
+    margin: 0;
+}
+
+.contenido {
+    position: relative;
+    z-index: 2; /* Asegura que el texto esté por ENCIMA de la capa oscura (overlay) */
+    margin-top: 60px;
+}
+
+/* CAPA OSCURA (OVERLAY)
+   Se usa para que las fotos de fondo no brillen tanto y se lea bien el texto */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* El 0.4 es la intensidad de la oscuridad */
+    z-index: 1; /* Está por debajo del texto pero por encima de la foto */
+}
+
+/*==================================================
+=                BARRA NAVEGACION                  =
+==================================================*/
+.navbar {
+    position: fixed; /* Se posiciona sobre el Hero */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Siempre al frente de todo */
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    
+    /* Efecto inicial (Transparente blanquecino) */
+    background-color: rgba(255, 255, 255, 0.09); /* 0.09 es qué tan "blanca" es la transparencia */
+    backdrop-filter: blur(5px); /* Desenfoque tipo vidrio esmerilado */
+    -webkit-backdrop-filter: blur(5px);
+    
+    transition: all 0.4s ease; /* Suaviza la transición cuando pasas el mouse */
+}
+
+.nav-top{
+    text-align: center;
+    width: 100%;
+}
+
+/* TÍTULO LOGO (ReVe Pâtissière) */
+.nav-top h2 {
+    font-family: 'Cinzel', serif; /* La fuente elegante que agregamos */
+    font-size: 30px;
+    margin: 30px auto 30px auto; /* Orden: Arriba, Derecha, Abajo, Izquierda. 30px lo baja del borde */
+    font-weight: 400;
+    letter-spacing: 5px; /* Espaciado entre letras estilo francés */
+    text-transform: uppercase; /* Fuerza las mayúsculas */
+}
+
+/* LÍNEA SEPARADORA */
+.nav-line {
+    width: 100%; /* Qué tan larga es la línea */
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5); /* Color blanco con 50% de transparencia */
+    margin: 0 auto; /* Centra la línea */
+}
+
+/* CONTENEDOR DE LOS LINKS (INICIO, PRODUCTOS, etc.) */
+.nav-menu {
+    padding: 10px;
+    text-align: center;
+    background-color: transparent;
+    width: 100%;
+}
+
+/* CADA LINK INDIVIDUAL */
+.nav-menu a {
+    margin: 0 20px;
+    text-decoration: none; /* Quita el subrayado de los links */
+    color: rgb(255, 255, 255);
+    letter-spacing: 3px;
+    font-family: 'Monserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: all 0.4s ease;
+}
+/* INTERACCIONES (HOVER - CUANDO PASAS EL MOUSE)*/
+.nav-menu:hover a {
+     color: rgb(0, 0, 0); 
+}
+
+/* Cuando el mouse toca un link específico (se pone un poco opaco) */
+.nav-menu a:hover {
+    opacity: 0.6; 
+}
+
+/* EL BLOQUE COMPLETO AL PASAR EL MOUSE (Efecto Pierre Hermé) */
+.navbar:hover {
+    background-color: rgb(255, 253, 253); 
+}
+
+/* Cambia el color de TODOS los textos a negro cuando tocas cualquier parte de la barra */
+.navbar:hover .nav-top h2,
+.navbar:hover .nav-menu a {
+    color: rgb(0, 0, 0);
+}
+
+/* La línea se vuelve gris oscura para que se vea sobre el fondo blanco */
+.navbar:hover .nav-line {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/*==================================================
+=                PAGINA PRODUCTOS                  =
+==================================================*/
+/* CARD */
+.producto-card {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* IMAGEN */
+.producto-card img {
+    width: 100%;
+    border-radius: 5px;
+    transition: transform 0.4s ease;
+}
+
+/* EFECTO ZOOM */
+.producto-card img:hover {
+    transform: scale(1.08);
+}
+
+/* NOMBRE */
+.producto-card h3 {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* PRECIO */
+.producto-card p {
+    color: gray;
+}
+
+.titulo-seccion {
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 50px;
+}
+
+.titulo-seccion h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    letter-spacing: 4px;
+}
+
+.titulo-seccion p {
+    font-family: 'Monserrat', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #000000;
+}
+
+.categoria-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+/*==================================================
+=              PAGINA QUIENES SOMOS                =
+==================================================*/
+.hero-nosotros{
+    padding-top: 50px;
+    margin-top: 20px;
+    height: 70vh;
+   
+    background-image: url('/img/fondoii.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-nosotros{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+}
+
+.titulo-hero-nosotros{
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+
+
+.historia-editorial{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+    padding: 70px 8%;
+}
+.historia-texto{
+    width: 50%;
+}
+.subtitulo-historia{
+    display: block;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+.historia-texto h2{
+    font-family: 'Cinzel', serif;
+    font-size: 56px;
+    margin-bottom: 35px;
+}
+.historia-texto p{
+    line-height: 2;
+    font-size: 18px;
+    max-width: 520px;
+}
+.historia-imagen img{
+    width: 500px;
+    height: 650px;
+    object-fit: cover;
+}
+/*---------------------------------*/
+
+.mision{
+display:flex;
+flex-direction: row-reverse;
+align-items:center;
+justify-content:space-between;
+padding:70px 8%;
+gap:80px;
+}
+.mision-texto{
+    width: 50%;
+}
+.subtitulo-mision{
+    display: block;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+.mision-texto h2{
+    font-family: 'Cinzel', serif;
+    font-size: 56px;
+    margin-bottom: 35px;
+}
+.mision-texto p{
+    line-height: 2;
+    font-size: 18px;
+    max-width: 520px;
+}
+.mision-imagen img{
+    width: 50%;
+    width: 500px;
+    height: 650px;
+    object-fit: cover;
+}
+/*------------------------------------------------------------*/
+
+.vision{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:70px 8%;
+gap:80px;
+}
+.vision-texto{
+    width: 50%;
+}
+.subtitulo-vision{
+    display: block;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+.vision-texto h2{
+    font-family: 'Cinzel', serif;
+    font-size: 56px;
+    margin-bottom: 35px;
+}
+.vision-texto p{
+    line-height: 2;
+    font-size: 18px;
+    max-width: 520px;
+}
+.vision-imagen img{
+    width: 500px;
+    height: 650px;
+    object-fit: cover;
+}
+/*-------------------------------------*/
+.titulo-staff{
+   font-family:'Cinzel', serif;
+
+   font-size:56px;
+
+   font-weight:400;
+
+   margin-bottom:35px;
+}
+
+
+/*==================================================
+=            PAGINA COMERCIALIZACION               =
+==================================================*/
+.hero-informacion{
+    padding-top: 50px;
+    margin-top: 180px;
+    height: 70vh;
+   
+    background-image: url('/img/fondoi.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-informacion{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+}
+
+.titulo-hero-informacion{
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.mapa-editorial{
+height:90vh;
+
+background-image:url('/img/ubicac.jpg');
+
+background-size:cover;
+background-position:center;
+
+position:relative;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+margin-top:120px;
+}
+
+.overlay-mapa{
+position:absolute;
+inset:0;
+
+background:rgba(0,0,0,.28);
+}
+
+.mapa-contenido{
+position:relative;
+z-index:2;
+
+text-align:center;
+}
+
+.mapa-contenido h2{
+font-family:'Cinzel', serif;
+font-size:72px;
+
+color:white;
+
+margin-bottom:40px;
+}
+
+.btn-mapa{
+display:inline-block;
+
+padding:18px 42px;
+
+border:1px solid white;
+
+color:white;
+
+text-decoration:none;
+
+letter-spacing:4px;
+
+text-transform:uppercase;
+}
+
+.informacion-reve{
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:120px 8%;
+
+gap:100px;
+}
+
+.informacion-texto{
+width:50%;
+}
+
+.informacion-texto span{
+letter-spacing:4px;
+text-transform:uppercase;
+}
+
+.informacion-texto h2{
+font-family:'Cinzel', serif;
+font-size:58px;
+
+margin:30px 0;
+}
+
+.informacion-imagen img{
+width:500px;
+height:650px;
+
+object-fit:cover;
+}
+
+
+/*==================================================
+=            SECCION NUESTROS PRODUCTOS HOME       =
+==================================================*/
+
+
+.productos-home{
+padding:60px 8%;
+background:white;
+}
+
+.productos-header{
+text-align:center;
+margin-bottom:70px;
+}
+
+.subtitulo-home{
+display:block;
+font-size:14px;
+letter-spacing:4px;
+text-transform:uppercase;
+margin-bottom:20px;
+}
+
+.productos-header h2{
+font-family:'Cinzel', serif;
+font-size:62px;
+font-weight:400;
+}
+
+.productos-slide-grid{
+display:flex;
+justify-content:center;
+gap:40px;
+padding:0 80px;
+}
+
+.producto-slide{
+text-align:center;
+}
+
+
+.producto-slide img{
+width:280px;
+height:280px;
+object-fit:cover;
+}
+
+.producto-slide h3{
+margin-top:22px;
+font-family:'Playfair Display', serif;
+font-size:26px;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+width:8%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon
+{
+filter: brightness(0);
+transform: scale(1.5);
+}
+
+
+/*==================================================
+=               SECCION CONOCENOS HOME            =
+==================================================*/
+.conocenos-home{
+    color: #f2f0f0;
+    height: 90vh;
+    background-image: url('/img/conocenos.jpg');
+    background-size:cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+text-align:center;
+}
+
+.conocenos-home::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.33);
+}
+
+.conocenos-contenido{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width:760px;
+    margin:0 auto;
+}
+
+.conocenos-contenido h2{
+font-family:'Cinzel', serif;
+font-size:64px;
+font-weight:400;
+margin:24px 0 30px;
+}
+
+.conocenos-contenido p{
+font-family:'Playfair Display', serif;
+font-size:28px;
+line-height:1.8;
+margin-bottom:45px;
+}
+
+.btn-conocenos{
+display:inline-block;
+padding:18px 42px;
+border:1px solid #f2f0f0;
+color:#fcfcfc;
+text-decoration:none;
+letter-spacing:4px;
+text-transform:uppercase;
+transition:.5s ease;
+}
+
+.btn-conocenos:hover{
+background:#ffffff;
+color:#000;
+}
+
+
+
+/*=================================
+            FOOTER
+==================================*/
+
+.footer-reve{
+background:#fefefe;
+padding-top:90px;
+border-top:1px solid #d9cfc2;
+margin-top:10px;
+}
+
+.footer-top{
+display:flex;
+justify-content:space-between;
+padding:0 8% 60px;
+}
+
+.footer-col{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.footer-col h3{
+font-family:'Cinzel', serif;
+font-size:30px;
+margin-bottom:20px;
+}
+
+.footer-col a{
+text-decoration:none;
+color:black;
+letter-spacing:2px;
+font-size:11px;
+text-transform:uppercase;
+}
+
+.footer-col a:hover{
+opacity:.6;
+}
+
+.footer-bottom{
+text-align:center;
+border-top:1px solid #d9cfc2;
+padding:30px 0;
+font-size:14px;
+}
