@@ -32,18 +32,19 @@
                 
                 <li><span style="margin-right: 10px;">💸</span> ○ Efectivo ($)</li>
                 
-                <li onclick="toggleData('mp-data')" style="cursor: pointer; transition: 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
-                    <span style="margin-right: 10px;">🔵</span> ○ Mercado Pago <small style="font-size: 0.7rem; opacity: 0.5;">(Ver datos)</small>
+                <li onclick="toggleData('mp-data')" style="cursor: pointer; transition: 0.3s; display: flex; align-items: center;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+                    <img src="{{ asset('imagenes/logo-mercado-pago.png') }}" alt="MP" style="height: 20px; width: auto; margin-right: 10px;"> 
+                    ○ Mercado Pago <small style="font-size: 0.7rem; opacity: 0.5; margin-left: 5px;">(Ver datos)</small>
                 </li>
                 <div id="mp-data" style="display: none; background: rgba(0, 158, 227, 0.05); padding: 15px; border-radius: 4px; margin: 10px 0; font-size: 1rem; border-left: 4px solid #009ee3;">
                     <strong>Alias:</strong> reve.pasteleria.mp<br>
                     <strong>Titular:</strong> Maximiliano Barreiro
                 </div>
 
-                <li onclick="toggleData('bank-data')" style="cursor: pointer; transition: 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
-                    <span style="margin-right: 10px;">💳</span> ○ Transferencia ($) <small style="font-size: 0.7rem; opacity: 0.5;">(Ver datos)</small>
+                <li onclick="toggleData('bank-data')" style="cursor: pointer; transition: 0.3s; display: flex; align-items: center;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+                    <span style="margin-right: 10px;">💳</span> ○ Transferencia ($) <small style="font-size: 0.7rem; opacity: 0.5; margin-left: 5px;">(Ver datos)</small>
                 </li>
-                <div id="bank-data" style="display: none; background: rgba(78, 45, 45, 0.05); padding: 15px; border-radius: 4px; margin: 10px 0; font-size: 1rem; border-left: 4px solid #4e2d2d;">
+                <div id="bank-data" style="display: none; background: rgba(78, 45, 45, 0.05); padding: 15px; border-radius: 4px; margin: 10px 0; font-size: 1rem; border-left: 3px solid #4e2d2d;">
                     <strong>CBU:</strong> 0000003100012345678901<br>
                     <strong>Alias:</strong> reve.bakery.corrientes<br>
                     <strong>Banco:</strong> Banco de Corrientes
