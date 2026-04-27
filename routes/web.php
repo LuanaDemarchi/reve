@@ -27,3 +27,14 @@ Route::get('/terminos', function () {
    return view('terminos');
 });
 
+Route::get('/cookies', function () {
+   return view('cookies');
+});
+
+Route::get('/tortas', function () {
+   return view('tortas');
+});
+
+Route::get('/rolls', function () {
+   return view('rolls');
+});

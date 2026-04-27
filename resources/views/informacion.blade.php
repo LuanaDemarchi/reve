@@ -63,7 +63,7 @@
     <div class="overlay-mapa"></div>
     <div class="mapa-contenido">
         <h2>Visitanos</h2>
-        <a href="http://googleusercontent.com/maps.google.com/6" target="_blank" class="btn-mapa">Ver ubicación</a>
+        <a href="https://www.google.com/maps/place/Av.+3+de+Abril+546,+W3410JXS+Corrientes/@-27.4750912,-58.8466006,17z/data=!4m6!3m5!1s0x94456cbdf144731f:0xd69e6a162e4d0d62!8m2!3d-27.4750103!4d-58.8451307!16s%2Fg%2F11j32tmfdx?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-mapa">Ver ubicación</a>
     </div>
 </section>
 

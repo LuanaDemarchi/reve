@@ -82,7 +82,7 @@
                 <p class="text-[#4e2d2d] font-medium italic mb-8">
                     "Endulzando tus momentos con responsabilidad y amor."
                 </p>
-                <a href="/" class="inline-block bg-wgite text-[#4e2d2d] font-semibold px-8 py-3 rounded-full hover:bg-white transition shadow-md transform hover:scale-105">
+                <a href="/" class="inline-block bg-white text-[#4e2d2d] font-semibold px-8 py-3 rounded-full hover:bg-white transition shadow-md transform hover:scale-105">
                     Volver al Inicio
                 </a>
             </div>

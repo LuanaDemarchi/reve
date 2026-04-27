@@ -7,17 +7,13 @@
     content="width=device-width, initial-scale=1.0">
 
     <title>ReVe</title>
-
-    <!-- Bootstrap -->
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Fuentes -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
+  
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
-    <!-- tailwindcss -->
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
@@ -53,7 +49,7 @@
 
 <a href="/quienes_somos">Quiénes Somos</a>
 <a href="/productos">Productos</a>
-<a href="/informacion">Comercialización</a>
+<a href="/informacion">informacion</a>
 
 </div>
 
@@ -70,7 +66,7 @@
 <div class="footer-col">
 <h3>Redes</h3>
 
-<a href="/contacto">Instagram</a>
+<a href="https://www.instagram.com/revepatissiere?igsh=ODF1dDg2dTlzYm5h&utm_source=qr">Instagram</a>
 <a href="/contacto"> Whatsapp</a>
 <a href="/contacto">Correo</a>
 

@@ -11,41 +11,48 @@ body {
 
 .hero {
     height: 100vh; 
-    background-size: cover; /* Ajusta la imagen para que cubra todo el espacio sin estirarse */
+    background-size: cover; 
     background-position: center; 
-    transition: background-image 1s ease-in-out; /* Controla la suavidad del cambio de fotos */
-    display: flex; /* Activa el modo caja flexible para alinear el contenido interno */
+  
+    display: flex; 
     justify-content: flex-start; 
     align-items: center; 
-    padding-left: 40px; /* Espacio entre el borde izquierdo y el texto */
+    padding-left: 40px; 
+}
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: 0;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
 }
 .hero-productos{
     padding-top: 50px;
     margin-top: 180px;
     height: 70vh;
-   
     background-image: url('/img/fondoProductos.jpg');
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     position: relative;
-
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 
-
 .overlay-productos{
     position: absolute;
     inset: 0;
-
     background: rgba(0,0,0,0.25);
 }
-
 
 .titulo-hero-productos{
     position: relative;
@@ -59,42 +66,33 @@ body {
 }
 
 .btn-pedido {
-    display: inline-block; /* Para que actúe como botón y use los márgenes */
-    padding: 10px 28px;    /* Espacio interno (Arriba/Abajo , Lados) */
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente blanquecino (como la img 4) */
-    backdrop-filter: blur(5px); /* Efecto vidrio esmerilado */
+    display: inline-block; 
+    padding: 10px 28px;    
+    background-color: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(5px); 
     -webkit-backdrop-filter: blur(5px);
-    /* Bordes redondeados */
-    border-radius: 8px;     /* Ajusta este valor si lo quieres más o menos redondo */
-    border: 1px solid rgba(255, 255, 255, 0.4);          /* Sin borde sólido */
-    
-    /* Estilo de Texto */
-    color: white;          /* Color de letra */
-    font-family: 'Montserrat', sans-serif; /* Usamos una fuente limpia */
+    border-radius: 8px;   
+    border: 1px solid rgba(255, 255, 255, 0.4);           
+    color: white;          
+    font-family: 'Montserrat', sans-serif; 
     font-weight: 400;
-    font-size: 12px;       /* Tamaño de fuente */
-    text-decoration: none; /* Quitamos el subrayado */
-    text-transform: uppercase; /* Forzamos mayúsculas */
-    letter-spacing: 2px;   /* Un poco de espacio elegante */
-    
-    /* Espaciado y Transiciones */
-    margin-top: 5px;      /* Espacio entre el H1 ReVe y el botón */
-    transition: all 0.3s ease; /* Transición suave para el hover */
-    
-    /* Aseguramos que esté por encima de la capa oscura */
+    font-size: 12px;      
+    text-decoration: none; 
+    text-transform: uppercase; 
+    letter-spacing: 2px;     
+    margin-top: 5px;      
+    transition: all 0.3s ease; 
     position: relative;
     z-index: 2;
 }
-
-/* Efecto Hover (cuando pasas el mouse por encima) */
 .btn-pedido:hover {
     background-color: rgba(250, 250, 250); 
-    color: black;/* Se vuelve un poco más opaco */
+    color: black;
     transform: translateY(-2px);    
-    border-color: white;                 /* El borde se funde con el fondo */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2)           /* Un pequeño efecto de levantamiento */
+    border-color: white;                
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2)           
 }
-/* TEXTO PRINCIPAL (H1) DENTRO DEL HERO */
+
 .contenido h1 {
     font-family: 'Cinzel', sans-serif;
     font-weight: 300;
@@ -106,39 +104,34 @@ body {
 
 .contenido {
     position: relative;
-    z-index: 2; /* Asegura que el texto esté por ENCIMA de la capa oscura (overlay) */
+    z-index: 2; 
     margin-top: 60px;
 }
 
-/* CAPA OSCURA (OVERLAY)
-   Se usa para que las fotos de fondo no brillen tanto y se lea bien el texto */
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* El 0.4 es la intensidad de la oscuridad */
-    z-index: 1; /* Está por debajo del texto pero por encima de la foto */
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1; 
 }
 
 /*==================================================
 =                BARRA NAVEGACION                  =
 ==================================================*/
 .navbar {
-    position: fixed; /* Se posiciona sobre el Hero */
+    position: fixed; 
     top: 0;
     width: 100%;
-    z-index: 1000; /* Siempre al frente de todo */
+    z-index: 1000; 
     color: white;
     font-family: 'Montserrat', sans-serif;
-    
-    /* Efecto inicial (Transparente blanquecino) */
-    background-color: rgba(255, 255, 255, 0.09); /* 0.09 es qué tan "blanca" es la transparencia */
-    backdrop-filter: blur(5px); /* Desenfoque tipo vidrio esmerilado */
+    background-color: rgba(255, 255, 255, 0.09); 
+    backdrop-filter: blur(5px); 
     -webkit-backdrop-filter: blur(5px);
-    
-    transition: all 0.4s ease; /* Suaviza la transición cuando pasas el mouse */
+    transition: all 0.4s ease;
 }
 
 .nav-top{
@@ -146,25 +139,22 @@ body {
     width: 100%;
 }
 
-/* TÍTULO LOGO (ReVe Pâtissière) */
 .nav-top h2 {
-    font-family: 'Cinzel', serif; /* La fuente elegante que agregamos */
+    font-family: 'Cinzel', serif; 
     font-size: 30px;
-    margin: 30px auto 30px auto; /* Orden: Arriba, Derecha, Abajo, Izquierda. 30px lo baja del borde */
+    margin: 30px auto 30px auto; 
     font-weight: 400;
-    letter-spacing: 5px; /* Espaciado entre letras estilo francés */
-    text-transform: uppercase; /* Fuerza las mayúsculas */
+    letter-spacing: 5px; 
+    text-transform: uppercase; 
 }
 
-/* LÍNEA SEPARADORA */
 .nav-line {
-    width: 100%; /* Qué tan larga es la línea */
+    width: 100%; 
     height: 1px;
-    background-color: rgba(255, 255, 255, 0.5); /* Color blanco con 50% de transparencia */
-    margin: 0 auto; /* Centra la línea */
+    background-color: rgba(255, 255, 255, 0.5); 
+    margin: 0 auto; 
 }
 
-/* CONTENEDOR DE LOS LINKS (INICIO, PRODUCTOS, etc.) */
 .nav-menu {
     padding: 10px;
     text-align: center;
@@ -172,10 +162,9 @@ body {
     width: 100%;
 }
 
-/* CADA LINK INDIVIDUAL */
 .nav-menu a {
     margin: 0 20px;
-    text-decoration: none; /* Quita el subrayado de los links */
+    text-decoration: none; 
     color: rgb(255, 255, 255);
     letter-spacing: 3px;
     font-family: 'Monserrat', sans-serif;
@@ -185,28 +174,23 @@ body {
     display: inline-block;
     transition: all 0.4s ease;
 }
-/* INTERACCIONES (HOVER - CUANDO PASAS EL MOUSE)*/
+
 .nav-menu:hover a {
      color: rgb(0, 0, 0); 
 }
 
-/* Cuando el mouse toca un link específico (se pone un poco opaco) */
+
 .nav-menu a:hover {
     opacity: 0.6; 
 }
-
-/* EL BLOQUE COMPLETO AL PASAR EL MOUSE (Efecto Pierre Hermé) */
 .navbar:hover {
     background-color: rgb(255, 253, 253); 
 }
 
-/* Cambia el color de TODOS los textos a negro cuando tocas cualquier parte de la barra */
 .navbar:hover .nav-top h2,
 .navbar:hover .nav-menu a {
     color: rgb(0, 0, 0);
 }
-
-/* La línea se vuelve gris oscura para que se vea sobre el fondo blanco */
 .navbar:hover .nav-line {
     background-color: rgba(0, 0, 0, 0.1);
 }
@@ -215,76 +199,64 @@ body {
 /*==================================================
 =                PAGINA PRODUCTOS                  =
 ==================================================*/
-/* CARD */
+
 .producto-card {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
 
-/* IMAGEN */
 .producto-card img {
     width: 100%;
     border-radius: 5px;
     transition: transform 0.4s ease;
 }
 
-/* EFECTO ZOOM */
 .producto-card img:hover {
     transform: scale(1.08);
 }
 
-/* NOMBRE */
 .producto-card h3 {
     margin-top: 15px;
     font-size: 18px;
 }
-
-/* PRECIO */
 .producto-card p {
     color: gray;
 }
-
 .titulo-seccion {
     text-align: center;
     margin-top: 200px;
     margin-bottom: 50px;
 }
-
 .titulo-seccion h1 {
     font-family: 'Playfair Display', serif;
     font-size: 50px;
     letter-spacing: 4px;
 }
-
 .titulo-seccion p {
     font-family: 'Monserrat', sans-serif;
     font-size: 14px;
     letter-spacing: 3px;
     color: #000000;
 }
-
 .categoria-titulo {
     font-family: 'Playfair Display', serif;
     font-size: 40px;
     margin-top: 60px;
     margin-bottom: 20px;
 }
+
 /*==================================================
-=              PAGINA QUIENES SOMOS                =
+              PAGINA QUIENES SOMOS                =
 ==================================================*/
 .hero-nosotros{
     padding-top: 50px;
     margin-top: 20px;
-    height: 70vh;
-   
+    height: 70vh;   
     background-image: url('/img/fondoii.jpg');
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     position: relative;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -306,9 +278,6 @@ body {
     letter-spacing: 8px;
     text-transform: uppercase;
 }
-
-
-
 .historia-editorial{
     display:flex;
     align-items: center;
@@ -372,7 +341,6 @@ gap:80px;
     max-width: 520px;
 }
 .mision-imagen img{
-    width: 50%;
     width: 500px;
     height: 650px;
     object-fit: cover;
@@ -422,23 +390,18 @@ gap:80px;
    margin-bottom:35px;
 }
 
-
 /*==================================================
 =            PAGINA COMERCIALIZACION               =
 ==================================================*/
 .hero-informacion{
     padding-top: 50px;
     margin-top: 180px;
-    height: 70vh;
-   
+    height: 70vh;   
     background-image: url('/img/fondoi.jpg');
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     position: relative;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -463,69 +426,48 @@ gap:80px;
 
 .mapa-editorial{
 height:90vh;
-
 background-image:url('/img/ubicac.jpg');
-
 background-size:cover;
 background-position:center;
-
 position:relative;
-
 display:flex;
 justify-content:center;
 align-items:center;
-
 margin-top:120px;
 }
-
 .overlay-mapa{
 position:absolute;
 inset:0;
-
 background:rgba(0,0,0,.28);
 }
-
 .mapa-contenido{
 position:relative;
 z-index:2;
-
 text-align:center;
 }
 
 .mapa-contenido h2{
 font-family:'Cinzel', serif;
 font-size:72px;
-
 color:white;
-
 margin-bottom:40px;
 }
 
 .btn-mapa{
 display:inline-block;
-
 padding:18px 42px;
-
 border:1px solid white;
-
 color:white;
-
 text-decoration:none;
-
 letter-spacing:4px;
-
 text-transform:uppercase;
 }
 
 .informacion-reve{
 display:flex;
-
 align-items:center;
-
 justify-content:space-between;
-
 padding:120px 8%;
-
 gap:100px;
 }
 
@@ -541,39 +483,33 @@ text-transform:uppercase;
 .informacion-texto h2{
 font-family:'Cinzel', serif;
 font-size:58px;
-
 margin:30px 0;
 }
 
 .informacion-imagen img{
 width:500px;
 height:650px;
-
 object-fit:cover;
 }
-
 
 /*==================================================
 =            SECCION NUESTROS PRODUCTOS HOME       =
 ==================================================*/
-
-
 .productos-home{
-padding:60px 8%;
+padding:30px 8% 10px;
 background:white;
 }
-
 .productos-header{
 text-align:center;
-margin-bottom:70px;
+margin-bottom:45px;
 }
-
 .subtitulo-home{
 display:block;
 font-size:14px;
 letter-spacing:4px;
 text-transform:uppercase;
 margin-bottom:20px;
+color: #000000;
 }
 
 .productos-header h2{
@@ -585,18 +521,16 @@ font-weight:400;
 .productos-slide-grid{
 display:flex;
 justify-content:center;
-gap:40px;
+gap:50px;
 padding:0 80px;
 }
-
 .producto-slide{
 text-align:center;
+color: #fefefe;
 }
-
-
 .producto-slide img{
-width:280px;
-height:280px;
+width:250px;
+height:290px;
 object-fit:cover;
 }
 
@@ -605,19 +539,17 @@ margin-top:22px;
 font-family:'Playfair Display', serif;
 font-size:26px;
 }
-
-.carousel-control-prev,
-.carousel-control-next{
-width:8%;
+.carousel-control-prev::after,
+.carousel-control-next::after{
+font-size: 28px;
+color: black;
+font-family: 'Cinzel', serif;
 }
 
 .carousel-control-prev-icon,
-.carousel-control-next-icon
-{
-filter: brightness(0);
-transform: scale(1.5);
+.carousel-control-next-icon{
+background-image: none;
 }
-
 
 /*==================================================
 =               SECCION CONOCENOS HOME            =
@@ -630,11 +562,9 @@ transform: scale(1.5);
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
 text-align:center;
 }
 
@@ -680,20 +610,114 @@ transition:.5s ease;
 
 .btn-conocenos:hover{
 background:#ffffff;
-color:#000;
+color:#000000;
+}
+/* ========================================= */
+/* CATEGORÍAS HOME */
+/* ========================================= */
+
+.categorias-home{
+    padding:20px 8% 60px;
+    background:white;
+}
+.categorias-home .productos-header{
+    margin-bottom: 25px;
+}
+.categorias-grid{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    flex-wrap: wrap;
 }
 
+.categoria-item{
+    position:relative;
+    width:350px;
+    height:330px;
+    overflow:hidden;
+    text-decoration:none;
+}
 
+.categoria-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s ease;
+}
 
+.categoria-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition: 0.4s ease;
+}
+
+.categoria-overlay h3{
+    color:white;
+    font-family:'Cinzel', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:40px;
+    letter-spacing:5px;
+}
+
+.categoria-item:hover img{
+    transform:scale(1.08);
+}
+
+.categoria-item:hover .categoria-overlay{
+    background:rgba(0,0,0,0.15);
+}
+
+/*=================================
+            NOVEDADES
+==================================*/
+
+.novedades-home{
+    width: 100vw;
+    padding:60px 8%;
+    overflow: hidden;
+    background:#fefefe;
+}
+
+.novedades-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.novedades-header h2{
+    font-family:'Cinzel', serif;
+    font-size:58px;
+    font-weight:0;
+}
+
+.novedades-slide{
+    display:flex;
+    justify-content:center;
+}
+
+.novedades-slide img{
+    width:100%;   
+    height:500px;
+    object-fit:cover;
+    display: block;
+}
+
+#carouselNovedades .carousel-control-prev-icon,
+#carouselNovedades .carousel-control-next-icon{
+    filter: brightness(0);
+    transform: scale(1.8);
+}
 /*=================================
             FOOTER
 ==================================*/
 
 .footer-reve{
 background:#fefefe;
-padding-top:90px;
+padding-top:60px;
 border-top:1px solid #d9cfc2;
-margin-top:10px;
+margin-top:0px;
 }
 
 .footer-top{
