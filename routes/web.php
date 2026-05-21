@@ -38,3 +38,16 @@ Route::get('/tortas', function () {
 Route::get('/rolls', function () {
    return view('rolls');
 });
+
+use App\Http\Controllers\AuthController;
+
+// Rutas para Login
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+// Rutas para Registro
+Route::get('/registro', [AuthController::class, 'showRegister'])->name('registro');
+Route::post('/registro', [AuthController::class, 'register']);
+
+// Ruta para Cerrar Sesión
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
