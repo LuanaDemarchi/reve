@@ -29,11 +29,39 @@
     <div class="nav-line"></div>
 
     <nav class="nav-menu">
-        <a href="/">Inicio</a>
-        <a href="/productos">Productos</a>
-        <a href="/quienes_somos">Quienes Somos</a>
-        <a href="/informacion">Información</a>
-        <a href="/contacto">Contacto</a>
+        @guest
+            <a href="/">Inicio</a>
+            <a href="/productos">Productos</a>
+            <a href="/quienes_somos">Quienes Somos</a>
+            <a href="/informacion">Información</a>
+            <a href="/contacto">Contacto</a>
+            <a href="{{ route('registro') }}">Registrarse</a>
+            <a href="{{ route('login') }}">Iniciar Sesión</a>
+        @endguest
+
+        @auth
+            @if(auth()->user()->rol === 'admin')
+                <a href="/consultas">Ver consultas</a>
+                <a href="/productos/listar">Listar productos</a>
+                <a href="/ventas">Listar ventas</a>
+                <a href="/libro/registrar">Registrar libro</a>
+                <a href="/libros/gestionar">Gestionar libros</a>
+                
+                <span style="color: #666; font-weight: 500; padding: 0 10px;">{{ auth()->user()->name }}</span>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+
+            @else
+                <a href="/">Inicio</a>
+                <a href="/productos">Productos</a>
+                <a href="/quienes_somos">Quienes Somos</a>
+                <a href="/informacion">Información</a>
+                <a href="/contacto">Contacto</a>
+                <a href="/carrito">Ver carrito</a>
+                
+                <span style="color: #666; font-weight: 500; padding: 0 10px;">{{ auth()->user()->name }}</span>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+            @endif
+        @endauth
     </nav>
 
 </header>
@@ -78,6 +106,10 @@
 </div>
 
 </footer>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
