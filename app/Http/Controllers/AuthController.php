@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Contacto; // 👈 IMPORTAMOS EL MODELO CONTACTO PARA GUARDAR
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ContactoRequest;
 
 class AuthController extends Controller
 {
@@ -58,5 +60,22 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    // 📩 PROCESA EL FORMULARIO DE CONTACTO Y LO GUARDA EN LA BD
+    public function store_contact(ContactoRequest $request) {
+        
+        // Si la validación falla, Laravel vuelve atrás solo.
+        $datos = $request->validated();
+
+        // Guardamos los datos mapeando lo que viene del formulario con los campos de la migración
+        Contacto::create([
+            'nombre'   => $datos['nombre'],
+            'email'    => $datos['email'],
+            'asunto'   => $datos['motivo'],   // Tu campo del formulario se llama 'motivo' y en la BD se guarda en 'asunto'
+            'mensaje'  => $datos['consulta'], // Tu campo del formulario se llama 'consulta' y en la BD se guarda en 'mensaje'
+        ]);
+
+        return redirect()->back()->with('success_message', 'Tu consulta ha sido enviada correctamente.');
     }
 }

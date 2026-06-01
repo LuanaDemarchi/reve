@@ -3,59 +3,102 @@
 
 <div class="bg-[#f8f4ee]">
 
-    <section class="w-full min-h-screen flex flex-col md:flex-row pt-40">
+   <section class="w-full min-h-screen flex flex-col md:flex-row pt-40">
 
-        <div class="md:w-1/2 min-h-screen">
-            <img src="{{ asset('img/fondoContacto.jpg') }}"
-                 class="w-full h-full object-cover"
-                 alt="Imagen de contacto Pastelería Revé">
-        </div>
-        <div class="md:w-1/2 min-h-screen bg-[#4e2d2d] flex items-center px-12 py-20">
-            <div class="w-full max-w-xl mx-auto">
+    <div class="md:w-1/2 min-h-screen">
+        <img src="{{ asset('img/fondoContacto.jpg') }}"
+             class="w-full h-full object-cover"
+             alt="Imagen de contacto Pastelería Revé">
+    </div>
+    
+    <div class="md:w-1/2 min-h-screen bg-[#4e2d2d] flex items-center px-12 py-20">
+        <div class="w-full max-w-xl mx-auto">
 
-                <h1 class="text-5xl text-white font-serif mb-10 tracking-wider">
-                    Contáctanos
-                </h1>
+            <h1 class="text-5xl text-white font-serif mb-10 tracking-wider">
+                Contáctanos
+            </h1>
 
-                <form class="space-y-5">
+            <!-- 1. CARTEL DE ÉXITO -->
+            @if (session('success_message'))
+                <div class="bg-green-600 text-white p-4 mb-6 rounded">
+                    {{ session('success_message') }}
+                </div>
+            @endif
 
-                    <div class="grid md:grid-cols-2 gap-4">
+            <!-- 2. CONFIGURAR ACCIÓN DEL FORMULARIO -->
+            <form action="{{ route('contacto.store') }}" method="POST" class="space-y-5">
+                @csrf <!-- Clave de seguridad obligatoria en Laravel -->
 
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <!-- Se agregó name="nombre" -->
                         <input type="text"
-                        placeholder="Nombre"
-                        class="w-full p-4 bg-transparent border border-white text-white placeholder-white outline-none">
-
-                        <input type="email"
-                        placeholder="Correo electrónico"
-                        class="w-full p-4 bg-transparent border border-white text-white placeholder-white outline-none">
-
+                               name="nombre"
+                               value="{{ old('nombre') }}"
+                               placeholder="Nombre"
+                               class="w-full p-4 bg-transparent border border-white text-white placeholder-white outline-none">
+                        @error('nombre')
+                            <small class="text-red-400 block mt-1">{{ $message }}</small>
+                        @enderror
                     </div>
 
+                    <div>
+                        <!-- Se agregó name="email" -->
+                        <input type="email"
+                               name="email"
+                               value="{{ old('email') }}"
+                               placeholder="Correo electrónico"
+                               class="w-full p-4 bg-transparent border border-white text-white placeholder-white outline-none">
+                        @error('email')
+                            <small class="text-red-400 block mt-1">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+
+                <div>
+                    <!-- Se agregó name="telefono" (Opcional) -->
                     <input type="text"
-                    placeholder="Teléfono"
-                    class="w-full p-4 bg-transparent border border-white text-white placeholder-white outline-none">
+                           name="telefono"
+                           value="{{ old('telefono') }}"
+                           placeholder="Teléfono"
+                           class="w-full p-4 bg-transparent border border-white text-white placeholder-white outline-none">
+                </div>
 
-                    <select class="w-full p-4 bg-transparent border border-white text-white outline-none">
-                        <option class="text-black">Pedido personalizado</option>
-                        <option class="text-black">Consulta de precios</option>
-                        <option class="text-black">Quejas o sugerencias</option>
+                <div>
+                    <!-- Se agregó name="motivo" -->
+                    <select name="motivo" class="w-full p-4 bg-transparent border border-white text-white outline-none">
+                        <option value="" class="text-black" disabled selected>Selecciona un motivo</option>
+                        <option value="Pedido personalizado" class="text-black" {{ old('motivo') == 'Pedido personalizado' ? 'selected' : '' }}>Pedido personalizado</option>
+                        <option value="Consulta de precios" class="text-black" {{ old('motivo') == 'Consulta de precios' ? 'selected' : '' }}>Consulta de precios</option>
+                        <option value="Quejas o sugerencias" class="text-black" {{ old('motivo') == 'Quejas o sugerencias' ? 'selected' : '' }}>Quejas o sugerencias</option>
                     </select>
+                    @error('motivo')
+                        <small class="text-red-400 block mt-1">{{ $message }}</small>
+                    @enderror
+                </div>
 
-                    <textarea rows="6"
-                    placeholder="Comentario"
-                    class="w-full p-4 bg-transparent border border-white text-white placeholder-white outline-none"></textarea>
+                <div>
+                    <!-- Se cambió a name="consulta" -->
+                    <textarea name="consulta"
+                              rows="6"
+                              placeholder="Comentario"
+                              class="w-full p-4 bg-transparent border border-white text-white placeholder-white outline-none">{{ old('consulta') }}</textarea>
+                    @error('consulta')
+                        <small class="text-red-400 block mt-1">{{ $message }}</small>
+                    @enderror
+                </div>
 
-                    <button type="submit"
-                    class="text-white uppercase tracking-[4px] border-b border-white pb-2 hover:opacity-70 transition">
-                        Enviar
-                    </button>
+                <button type="submit"
+                        class="text-white uppercase tracking-[4px] border-b border-white pb-2 hover:opacity-70 transition">
+                    Enviar
+                </button>
 
-                </form>
+            </form>
 
-            </div>
         </div>
+    </div>
 
-    </section>
+</section>
 
     <section class="w-full bg-[#f8f4ee] py-24">
 

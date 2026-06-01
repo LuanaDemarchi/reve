@@ -3,8 +3,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ReVe</title>
    
@@ -41,16 +40,21 @@
 
         @auth
             @if(auth()->user()->rol === 'admin')
-                <a href="/consultas">Ver consultas</a>
-                <a href="/productos/listar">Listar productos</a>
-                <a href="/ventas">Listar ventas</a>
-                <a href="/libro/registrar">Registrar libro</a>
-                <a href="/libros/gestionar">Gestionar libros</a>
+                <!-- 🛠️ Enlaces del Administrador conectados al AdminController -->
+                <a href="/admin/consultas">Ver consultas</a>
+                <a href="/admin/ventas">Listar productos</a>
+                <a href="/admin/ventas">Listar ventas</a>
+                <a href="/admin/usuarios">Listar usuarios</a> 
+                
+                 
+                <a href="/libro/registrar">Cargar nuevos Catalagos</a>
+                <a href="/libros/gestionar">Gestionar Catalagos</a>
                 
                 <span style="color: #666; font-weight: 500; padding: 0 10px;">{{ auth()->user()->name }}</span>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
 
             @else
+                <!-- 🛒 Enlaces del Cliente Registrado Común -->
                 <a href="/">Inicio</a>
                 <a href="/productos">Productos</a>
                 <a href="/quienes_somos">Quienes Somos</a>

@@ -51,3 +51,12 @@ Route::post('/registro', [AuthController::class, 'register']);
 
 // Ruta para Cerrar Sesión
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Simplemente agregá esta línea tal cual:
+Route::post('/contacto', [\App\Http\Controllers\AuthController::class, 'store_contact'])->name('contacto.store');
+
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/usuarios', [\App\Http\Controllers\AdminController::class, 'usuarios'])->name('admin.usuarios');
+Route::get('/admin/productos', [\App\Http\Controllers\AdminController::class, 'productos'])->name('admin.productos');
+Route::delete('/admin/consultas/{id}', [\App\Http\Controllers\AdminController::class, 'destruirConsulta'])->name('admin.consultas.destroy');
+Route::get('/admin/consultas', [\App\Http\Controllers\AdminController::class, 'consultas'])->name('admin.consultas');

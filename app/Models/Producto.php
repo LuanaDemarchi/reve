@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
 {
-    use HasFactory; // Si ya te viene esta línea de fábrica, déjala arriba
+    use HasFactory; 
 
     protected $fillable = [
         'nombre',
