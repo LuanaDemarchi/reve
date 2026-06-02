@@ -1,41 +1,120 @@
-<div class="register-container">
-    <h2>Crear Cuenta</h2>
+@extends('layouts.app')
 
-    @if ($errors->any())
-        <div style="color: red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+@section('contenido')
 
-    <form action="{{ route('registro') }}" method="POST">
-        @csrf 
+<section style="
+min-height:100vh;
+background:#f8f4ee;
+display:flex;
+justify-content:center;
+align-items:center;
+padding-top:220px;
+padding-bottom:100px;
+">
 
-        <div>
-            <label>Nombre Completo:</label>
-            <input type="text" name="name" value="{{ old('name') }}" required placeholder="Tu nombre">
-        </div>
+<div style="
+width:600px;
+background:white;
+padding:60px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+border-radius:8px;
+">
 
-        <div>
-            <label>Correo Electrónico:</label>
-            <input type="email" name="email" value="{{ old('email') }}" required placeholder="ejemplo@mail.com">
-        </div>
+<div style="text-align:center;margin-bottom:40px;">
 
-        <div>
-            <label>Contraseña (Mínimo 6 caracteres):</label>
-            <input type="password" name="password" required placeholder="******">
-        </div>
+<span style="
+letter-spacing:4px;
+text-transform:uppercase;
+font-size:13px;
+color:#8c7a6b;
+">
+ReVé Pâtissière
+</span>
 
-        <div>
-            <label>Confirmar Contraseña:</label>
-            <input type="password" name="password_confirmation" required placeholder="******">
-        </div>
+<h1 style="
+font-family:'Cinzel', serif;
+font-size:48px;
+margin-top:15px;
+color:#4e2d2d;
+">
+Crear Cuenta
+</h1>
 
-        <button type="submit">Registrarse</button>
-    </form>
-
-    <p>¿Ya tenés cuenta? <a href="{{ route('login') }}">Iniciá sesión acá</a></p>
 </div>
+
+<form method="POST" action="/registro">
+
+@csrf
+
+<div class="mb-3">
+
+<label>Nombre</label>
+
+<input
+type="text"
+name="name"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+class="form-control">
+
+</div>
+
+<div class="mb-4">
+
+<label>Contraseña</label>
+
+<input
+type="password"
+name="password"
+class="form-control">
+
+</div>
+
+<div class="mb-4">
+
+<label>Confirmar Contraseña</label>
+
+<input
+type="password"
+name="password_confirmation"
+class="form-control">
+
+</div>
+
+<button
+type="submit"
+class="btn btn-dark w-100">
+
+Registrarme
+
+</button>
+
+</form>
+
+<div style="
+text-align:center;
+margin-top:25px;
+">
+
+¿Ya tenés cuenta?
+
+<a href="/login">
+Iniciar sesión
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+@endsection

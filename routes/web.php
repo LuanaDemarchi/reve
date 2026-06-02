@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ProductoController;
+
+use App\Http\Controllers\VentaController;
+
+Route::get('/admin/ventas', [VentaController::class, 'index']);
+
 Route::get('/', function () {
     return view('inicio');
 });
@@ -57,6 +63,18 @@ Route::post('/contacto', [\App\Http\Controllers\AuthController::class, 'store_co
 
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/usuarios', [\App\Http\Controllers\AdminController::class, 'usuarios'])->name('admin.usuarios');
-Route::get('/admin/productos', [\App\Http\Controllers\AdminController::class, 'productos'])->name('admin.productos');
 Route::delete('/admin/consultas/{id}', [\App\Http\Controllers\AdminController::class, 'destruirConsulta'])->name('admin.consultas.destroy');
 Route::get('/admin/consultas', [\App\Http\Controllers\AdminController::class, 'consultas'])->name('admin.consultas');
+
+
+Route::get('/admin/productos', [ProductoController::class, 'index']);
+
+Route::get('/admin/productos/create', [ProductoController::class, 'create']);
+
+Route::post('/admin/productos', [ProductoController::class, 'store']);
+
+Route::get('/admin/productos/{producto}/edit', [ProductoController::class, 'edit']);
+
+Route::put('/admin/productos/{producto}', [ProductoController::class, 'update']);
+
+Route::delete('/admin/productos/{producto}', [ProductoController::class, 'destroy']);

@@ -1,29 +1,100 @@
-<div class="login-container">
-    <h2>Iniciar Sesión</h2>
+@extends('layouts.app')
 
-    @if ($errors->any())
-        <div style="color: red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+@section('contenido')
 
-    <form action="{{ route('login') }}" method="POST">
-        @csrf <div>
-            <label>Correo Electrónico:</label>
-            <input type="email" name="email" value="{{ old('email') }}" required placeholder="ejemplo@mail.com">
-        </div>
+<section style="
+min-height:100vh;
+background:#f8f4ee;
+display:flex;
+justify-content:center;
+align-items:center;
+padding-top:220px;
+padding-bottom:100px;
+">
 
-        <div>
-            <label>Contraseña:</label>
-            <input type="password" name="password" required placeholder="******">
-        </div>
+<div style="
+width:500px;
+background:white;
+padding:60px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+border-radius:8px;
+">
 
-        <button type="submit">Ingresar</button>
-    </form>
+<div style="text-align:center;margin-bottom:40px;">
+<span style="
+letter-spacing:4px;
+text-transform:uppercase;
+font-size:13px;
+color:#8c7a6b;
+">
+ReVé Pâtissière
+</span>
 
-    <p>¿No tenés cuenta? <a href="{{ route('registro') }}">Registrate acá</a></p>
+<h1 style="
+font-family:'Cinzel', serif;
+font-size:48px;
+margin-top:15px;
+color:#4e2d2d;
+">
+Bienvenida
+</h1>
 </div>
+
+<form method="POST" action="/login">
+
+@csrf
+
+<div class="mb-4">
+
+<label style="margin-bottom:8px;">
+Email
+</label>
+
+<input
+type="email"
+name="email"
+class="form-control">
+
+</div>
+
+<div class="mb-4">
+
+<label style="margin-bottom:8px;">
+Contraseña
+</label>
+
+<input
+type="password"
+name="password"
+class="form-control">
+
+</div>
+
+<button
+type="submit"
+class="btn btn-dark w-100">
+
+Ingresar
+
+</button>
+
+</form>
+
+<div style="
+text-align:center;
+margin-top:25px;
+">
+
+¿No tenés cuenta?
+
+<a href="/registro">
+Registrate
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+@endsection
