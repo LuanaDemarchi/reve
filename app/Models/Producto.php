@@ -9,15 +9,10 @@ class Producto extends Model
 {
     use HasFactory; 
 
-    protected $fillable = [
-        'nombre',
-        'descripcion',
-        'precio',
-        'stock',
-        'url_imagen',
-        'activo',
-    ];
+    // Campos permitidos para guardar desde los formularios
+  protected $fillable = ['nombre', 'descripcion', 'precio', 'stock', 'url_imagen', 'activo'];
 
+    // Formateo automático de tipos de datos al salir de la Base de Datos
     protected $casts = [
         'precio' => 'decimal:2',
         'stock' => 'integer',

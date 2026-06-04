@@ -19,6 +19,13 @@
         </div>
     @endif
 
+    {{-- NUEVO: Cartel de aviso cuando no hay stock --}}
+    @if(session('sin_stock'))
+        <div class="alert alert-warning alert-dismissible fade show mb-4 text-center fw-bold" style="color: #856404; background-color: #fff3cd; border-color: #ffeeba;" role="alert">
+            ⚠️ Nos quedamos sin stock.
+        </div>
+    @endif
+
     @if(empty($carrito))
         <div class="text-center py-5">
             <p class="fs-4 text-muted">Tu carrito está vacío por ahora.</p>
@@ -45,7 +52,7 @@
                                 <tr>
                                     <td class="py-3">
                                         <div class="d-flex align-items-center">
-                                            @if($item['imagen'])
+                                            @if(isset($item['imagen']) && !empty($item['imagen']))
                                                 <img src="{{ asset($item['imagen']) }}" style="width: 55px; height: 55px; object-fit: cover; border-radius: 6px;" class="me-3">
                                             @endif
                                             <span class="fw-bold text-secondary">{{ $item['nombre'] }}</span>

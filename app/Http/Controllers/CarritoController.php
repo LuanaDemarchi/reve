@@ -31,10 +31,15 @@ class CarritoController extends Controller
         return view('carrito.index', compact('carrito', 'total'));
     }
 
-    public function agregar(Request $request, $id)
+   public function agregar(Request $request, $id)
     {
         $producto = Producto::find($id);
         if (!$producto) return redirect()->back()->with('error', 'Producto no encontrado.');
+
+        // Si el stock es 0 o menor, lo mandamos directo al carrito con el aviso
+        if ($producto->stock <= 0) {
+            return redirect()->route('carrito.index')->with('sin_stock', true);
+        }
 
         $carrito = session()->get('carrito', []);
         
