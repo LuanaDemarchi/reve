@@ -16,7 +16,6 @@ Route::get('/informacion', function () {
     return view('informacion');
 });
 
-
 Route::get('/productos', function () {
     return view('productos');
 });
@@ -78,3 +77,22 @@ Route::get('/admin/productos/{producto}/edit', [ProductoController::class, 'edit
 Route::put('/admin/productos/{producto}', [ProductoController::class, 'update']);
 
 Route::delete('/admin/productos/{producto}', [ProductoController::class, 'destroy']);
+
+
+Route::middleware(['auth'])->group(function () {
+    
+});
+
+use App\Http\Controllers\CarritoController;
+
+// Rutas públicas
+Route::get('/carrito', [CarritoController::class, 'verCarrito'])->name('carrito.index'); // Cambiado a 'carrito.index' para coincidir con tu controlador
+Route::post('/carrito/agregar/{id}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+Route::delete('/carrito/quitar/{id}', [CarritoController::class, 'quitar'])->name('carrito.quitar');
+
+// Rutas protegidas (requieren estar logueado)
+Route::middleware(['auth'])->group(function () {
+    Route::post('/carrito/confirmar', [CarritoController::class, 'confirmar'])->name('carrito.confirmar');
+    Route::post('/carrito/procesar', [CarritoController::class, 'procesar'])->name('carrito.procesar');
+    Route::get('/carrito/comprobante', [CarritoController::class, 'comprobante'])->name('carrito.comprobante');
+});

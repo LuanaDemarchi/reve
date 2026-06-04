@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('cliente_id')
-                  ->constrained('clientes')
+                  ->constrained('users')
                   ->onDelete('cascade');
 
             $table->decimal('total', 10, 2);

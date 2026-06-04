@@ -44,4 +44,12 @@ class ProductoController extends Controller
 
         return redirect('/admin/productos');
     }
+    public function publico()
+{
+    $rolls   = Producto::where('activo', true)->where('categoria', 'roll')->get();
+    $cookies = Producto::where('activo', true)->where('categoria', 'cookie')->get();
+    $tortas  = Producto::where('activo', true)->where('categoria', 'torta')->get();
+
+    return view('productos', compact('rolls', 'cookies', 'tortas'));
+}
 }

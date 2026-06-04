@@ -36,6 +36,10 @@
             <a href="/informacion">Información</a>
             <a href="/contacto">Contacto</a>
 
+            <a href="/carrito">
+                Mi Carrito
+            </a>
+
             <a href="{{ route('registro') }}">
                 Registrarse
             </a>

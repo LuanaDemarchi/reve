@@ -9,16 +9,8 @@ class Venta extends Model
     protected $fillable = [
         'cliente_id',
         'total',
-        'estado'
+        'estado',
+        'direccion',
+        'telefono',
     ];
-
-    public function cliente()
-    {
-        return $this->belongsTo(Cliente::class);
-    }
-
-    public function detalles()
-    {
-        return $this->hasMany(DetalleVenta::class);
-    }
 }

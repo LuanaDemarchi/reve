@@ -30,4 +30,13 @@ return new class extends Migration
     {
         Schema::dropIfExists('productos');
     }
+
+    public function publico()
+{
+    $rolls   = Producto::where('activo', true)->where('nombre', 'like', '%roll%')->orWhere('nombre', 'like', '%canela%')->get();
+    $cookies = Producto::where('activo', true)->where('nombre', 'like', '%cookie%')->orWhere('nombre', 'like', '%galleta%')->get();
+    $tortas  = Producto::where('activo', true)->where('nombre', 'like', '%torta%')->orWhere('nombre', 'like', '%cake%')->get();
+
+    return view('productos', compact('rolls', 'cookies', 'tortas'));
+}
 };
