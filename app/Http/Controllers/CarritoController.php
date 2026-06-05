@@ -50,7 +50,7 @@ class CarritoController extends Controller
                 "nombre"   => $producto->nombre,
                 "cantidad" => 1,
                 "precio"   => $producto->precio,
-                "imagen"   => $producto->imagen
+                "imagen"   => $producto->url_imagen 
             ];
         }
         session()->put('carrito', $carrito);
@@ -100,12 +100,13 @@ class CarritoController extends Controller
                 $total += $item['precio'] * $item['cantidad'];
             }
 
+            // 💡 CORREGIDO: Evitamos valores NULL si el formulario viene vacío
             $venta = Venta::create([
                 'cliente_id' => auth()->id(),
                 'total'      => $total,
                 'estado'     => 'Pendiente',
-                'direccion'  => $request->input('direccion'),
-                'telefono'   => $request->input('telefono'),
+                'direccion'  => $request->input('direccion') ?? 'Retira en local',
+                'telefono'   => $request->input('telefono') ?? 'Sin teléfono',
             ]);
 
             foreach ($carrito as $id => $item) {
@@ -129,9 +130,9 @@ class CarritoController extends Controller
                 'nro_pedido'  => 'N° ' . $venta->id,
                 'fecha'       => $venta->created_at->format('d/m/Y H:i'),
                 'cliente'     => auth()->user()->name,
-                'telefono'    => $request->input('telefono'),
-                'direccion'   => $request->input('direccion'),
-                'metodo_pago' => $request->input('metodo_pago'),
+                'telefono'    => $request->input('telefono') ?? 'Sin teléfono',
+                'direccion'   => $request->input('direccion') ?? 'Retira en local',
+                'metodo_pago' => $request->input('metodo_pago') ?? 'No especificado',
                 'productos'   => $carrito,
                 'total'       => $total
             ];

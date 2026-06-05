@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('contenido')
-<div class="container d-flex flex-column justify-content-center" style="min-height: 85vh; padding-top: 140px; padding-bottom: 70px;">
+<div class="container d-flex flex-column justify-content-center" style="min-height: 85vh; padding-top: 200px; padding-bottom: 70px;">
     
     <h2 class="mb-4 fw-bold text-center" style="font-family: 'Cinzel', serif; color: #333; letter-spacing: 1px;">
         Datos de Envío y Pago 📦

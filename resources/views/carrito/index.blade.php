@@ -4,7 +4,7 @@
 <div class="container d-flex flex-column justify-content-center" style="min-height: 80vh; padding-top: 170px; padding-bottom: 70px;">
     
     <h2 class="mb-5 fw-bold text-center" style="font-family: 'Cinzel', serif; color: #333; letter-spacing: 1px;">
-        Tu Carrito de Rolls 🛒
+        Tu Carrito 🛒
     </h2>
 
     @if(session('success'))

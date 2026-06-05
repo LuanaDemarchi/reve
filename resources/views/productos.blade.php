@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('contenido')
 <div class="hero-productos">
@@ -42,6 +41,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/roll.jpeg') }}" class="img-fluid">
                 <h3>Clasico</h3>
+                <p class="descripcion-producto">
+                    Roll suave de canela.
+                </p>
                 <p>$2500</p>
                 <form action="{{ route('carrito.agregar', 1) }}" method="POST">
                     @csrf
@@ -54,6 +56,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/roll1.jpeg') }}" class="img-fluid">
                 <h3>Creamchesse</h3>
+                <p class="descripcion-producto">
+                    Roll de canela con cobertura de creamcheese
+                </p>
                 <p>$2700</p>
                 <form action="{{ route('carrito.agregar', 2) }}" method="POST">
                     @csrf
@@ -66,6 +71,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/roll2.jpeg') }}" class="img-fluid">
                 <h3>Dulce de leche</h3>
+                <p class="descripcion-producto">
+                   Roll de canela con cobertura de dulce de leche
+                </p>
                 <p>$2700</p>
                 <form action="{{ route('carrito.agregar', 3) }}" method="POST">
                     @csrf
@@ -78,6 +86,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/roll4.jpeg') }}" class="img-fluid">
                 <h3>Chocotorta</h3>
+                <p class="descripcion-producto">
+                    Roll de canela con dulce de leche y chocolina
+                </p>
                 <p>$2700</p>
                 <form action="{{ route('carrito.agregar', 4) }}" method="POST">
                     @csrf
@@ -90,6 +101,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/roll5.jpeg') }}" class="img-fluid">
                 <h3>Oreo</h3>
+                <p class="descripcion-producto">
+                    Roll de canela con creamcheese y oreo
+                </p>
                 <p>$2700</p>
                 <form action="{{ route('carrito.agregar', 5) }}" method="POST">
                     @csrf
@@ -102,6 +116,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/roll6.jpeg') }}" class="img-fluid">
                 <h3>Frutos Rojos</h3>
+                <p class="descripcion-producto">
+                    Roll de canela con cobertura de frutos rojos
+                </p>
                 <p>$2700</p>
                 <form action="{{ route('carrito.agregar', 6) }}" method="POST">
                     @csrf
@@ -121,6 +138,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/cookies/cookies1.jpg') }}" class="img-fluid">
                 <h3>Clasica</h3>
+                <p class="descripcion-producto">
+                    Cookie con chips de chocolate
+                </p>
                 <p>$2200</p>
                 <form action="{{ route('carrito.agregar', 7) }}" method="POST">
                     @csrf
@@ -133,6 +153,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/cookies/cookies2.jpg') }}" class="img-fluid">
                 <h3>Chocolate Blanco</h3>
+                <p class="descripcion-producto">
+                   Cookie con trocitos de chocolate blanco
+                </p>
                 <p>$2400</p>
                 <form action="{{ route('carrito.agregar', 8) }}" method="POST">
                     @csrf
@@ -145,6 +168,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/cookies/cookies3.jpg') }}" class="img-fluid">
                 <h3>Cafe</h3>
+                <p class="descripcion-producto">
+                    Cookie con sabor a café
+                </p>
                 <p>$2500</p>
                 <form action="{{ route('carrito.agregar', 9) }}" method="POST">
                     @csrf
@@ -157,6 +183,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/cookies/cookies4.jpg') }}" class="img-fluid">
                 <h3>Pistacho</h3>
+                <p class="descripcion-producto">
+                   Rellena de pistacho con trocitos de pistacho
+                </p>
                 <p>$3000</p>
                 <form action="{{ route('carrito.agregar', 10) }}" method="POST">
                     @csrf
@@ -169,6 +198,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/cookies/cookies5.jpg') }}" class="img-fluid">
                 <h3>Chocolate</h3>
+                <p class="descripcion-producto">
+                    Cookie normal con trocitos de chocolate
+                </p>
                 <p>$2500</p>
                 <form action="{{ route('carrito.agregar', 11) }}" method="POST">
                     @csrf
@@ -181,6 +213,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/cookies/cookies8.jpg') }}" class="img-fluid">
                 <h3>Frutos Rojos</h3>
+                <p class="descripcion-producto">
+                    Cookie con relleno de frutos rojos
+                </p>
                 <p>$3500</p>
                 <form action="{{ route('carrito.agregar', 12) }}" method="POST">
                     @csrf
@@ -201,6 +236,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/tortas/torta1.jpg') }}" class="img-fluid">
                 <h3>Carrot Cake</h3>
+                <p class="descripcion-producto">
+                    Torta húmeda de zanahoria con queso crema
+                </p>
                 <p>$8500</p>
                 <form action="{{ route('carrito.agregar', 13) }}" method="POST">
                     @csrf
@@ -213,6 +251,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/tortas/torta2.png') }}" class="img-fluid">
                 <h3>Torta Cafe</h3>
+                <p class="descripcion-producto">
+                  Bizcocho suave con intenso sabor a café
+                </p>
                 <p>$9000</p>
                 <form action="{{ route('carrito.agregar', 14) }}" method="POST">
                     @csrf
@@ -225,6 +266,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/tortas/torta3.jpg') }}" class="img-fluid">
                 <h3>Cheesecake</h3>
+                <p class="descripcion-producto">
+                   Torta cremosa con base de galletas crocante
+                </p>
                 <p>$8800</p>
                 <form action="{{ route('carrito.agregar', 15) }}" method="POST">
                     @csrf
@@ -237,6 +281,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/tortas/torta4.png') }}" class="img-fluid">
                 <h3>Torta Frutilla</h3>
+                <p class="descripcion-producto">
+                    Torta suave con relleno de crema y frutilla
+                </p>
                 <p>$8800</p>
                 <form action="{{ route('carrito.agregar', 16) }}" method="POST">
                     @csrf
@@ -249,6 +296,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/tortas/torta5.png') }}" class="img-fluid">
                 <h3>Torta Chocolate</h3>
+                <p class="descripcion-producto">
+                    Torta con relleno de chocolate amargo
+                </p>
                 <p>$8800</p>
                 <form action="{{ route('carrito.agregar', 17) }}" method="POST">
                     @csrf
@@ -261,6 +311,9 @@
             <div class="producto-card">
                 <img src="{{ asset('img/tortas/torta6.png') }}" class="img-fluid">
                 <h3>Torta Frutos Rojos</h3>
+                <p class="descripcion-producto">
+                   Suave y rellena con frutos rojos
+                </p>
                 <p>$8800</p>
                 <form action="{{ route('carrito.agregar', 18) }}" method="POST">
                     @csrf

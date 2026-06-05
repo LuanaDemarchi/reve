@@ -13,6 +13,7 @@
 
         <div class="mb-3">
             <label>Nombre</label>
+
             <input
                 type="text"
                 name="nombre"
@@ -23,6 +24,7 @@
 
         <div class="mb-3">
             <label>Descripción</label>
+
             <textarea
                 name="descripcion"
                 class="form-control"
@@ -31,6 +33,7 @@
 
         <div class="mb-3">
             <label>Precio</label>
+
             <input
                 type="number"
                 step="0.01"
@@ -42,6 +45,7 @@
 
         <div class="mb-3">
             <label>Stock</label>
+
             <input
                 type="number"
                 name="stock"
@@ -51,7 +55,31 @@
         </div>
 
         <div class="mb-3">
+            <label>Categoría</label>
+
+            <select name="categoria" class="form-control">
+
+                <option value="roll"
+                    {{ $producto->categoria == 'roll' ? 'selected' : '' }}>
+                    Roll
+                </option>
+
+                <option value="cookie"
+                    {{ $producto->categoria == 'cookie' ? 'selected' : '' }}>
+                    Cookie
+                </option>
+
+                <option value="torta"
+                    {{ $producto->categoria == 'torta' ? 'selected' : '' }}>
+                    Torta
+                </option>
+
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label>URL Imagen</label>
+
             <input
                 type="text"
                 name="url_imagen"
@@ -83,7 +111,7 @@
 
         <a href="/admin/productos"
            class="btn btn-secondary">
-           Volver
+            Volver
         </a>
 
     </form>
