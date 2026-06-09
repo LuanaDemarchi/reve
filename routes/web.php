@@ -58,3 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/carrito/procesar', [CarritoController::class, 'procesar'])->name('carrito.procesar');
     Route::get('/carrito/comprobante', [CarritoController::class, 'comprobante'])->name('carrito.comprobante');
 });
+
+Route::get('/admin/ventas', [VentaController::class, 'index']);
+Route::put('/admin/ventas/{id}/estado', [VentaController::class, 'cambiarEstado']);
+Route::put('/admin/consultas/{id}/responder', [\App\Http\Controllers\AdminController::class, 'responderConsulta'])->name('admin.consultas.responder');

@@ -32,30 +32,35 @@ class CarritoController extends Controller
     }
 
    public function agregar(Request $request, $id)
-    {
-        $producto = Producto::find($id);
-        if (!$producto) return redirect()->back()->with('error', 'Producto no encontrado.');
+{
+    $producto = Producto::find($id);
+    if (!$producto) return redirect()->back()->with('error', 'Producto no encontrado.');
 
-        // Si el stock es 0 o menor, lo mandamos directo al carrito con el aviso
-        if ($producto->stock <= 0) {
-            return redirect()->route('carrito.index')->with('sin_stock', true);
-        }
-
-        $carrito = session()->get('carrito', []);
-        
-        if (isset($carrito[$id])) {
-            $carrito[$id]['cantidad']++;
-        } else {
-            $carrito[$id] = [
-                "nombre"   => $producto->nombre,
-                "cantidad" => 1,
-                "precio"   => $producto->precio,
-                "imagen"   => $producto->url_imagen 
-            ];
-        }
-        session()->put('carrito', $carrito);
-        return redirect()->back()->with('success', 'Producto agregado!');
+    // Si el stock es 0 o menor, avisamos
+    if ($producto->stock <= 0) {
+        return redirect()->back()->with('error', 'Lo sentimos, este producto está sin stock.');
     }
+
+    $carrito = session()->get('carrito', []);
+
+    if (isset($carrito[$id])) {
+        // Verificar que no supere el stock disponible
+        if ($carrito[$id]['cantidad'] >= $producto->stock) {
+            return redirect()->back()->with('error', 'No hay más stock disponible para este producto.');
+        }
+        $carrito[$id]['cantidad']++;
+    } else {
+        $carrito[$id] = [
+            "nombre"   => $producto->nombre,
+            "cantidad" => 1,
+            "precio"   => $producto->precio,
+            "imagen"   => $producto->url_imagen
+        ];
+    }
+
+    session()->put('carrito', $carrito);
+    return redirect()->back()->with('success', 'Producto agregado!');
+}
 
     public function quitar($id)
 {

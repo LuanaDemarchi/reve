@@ -9,7 +9,6 @@
         </div>
     </div>
 
-    <!-- Mensaje de confirmación cuando se borra -->
     @if (session('success_message'))
         <div class="bg-green-600 text-white p-4 mb-6 rounded shadow-sm">
             {{ session('success_message') }}
@@ -32,13 +31,23 @@
                                 (<span class="italic">{{ $consulta->email }}</span>)
                             </p>
                         </div>
-                        
+
                         <div class="flex items-center gap-4">
+                            {{-- Badge de estado --}}
+                            @if($consulta->estado == 'Respondido')
+                                <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-semibold">
+                                    ✅ Respondido
+                                </span>
+                            @else
+                                <span class="text-xs bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full font-semibold">
+                                    ⏳ Pendiente
+                                </span>
+                            @endif
+
                             <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-mono">
                                 {{ $consulta->created_at->format('d/m/Y H:i') }}
                             </span>
-                            
-                            <!-- Botón de Eliminar consulta -->
+
                             <form action="{{ route('admin.consultas.destroy', $consulta->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que querés eliminar esta consulta?');">
                                 @csrf
                                 @method('DELETE')
@@ -48,9 +57,34 @@
                             </form>
                         </div>
                     </div>
-                    <div class="text-gray-700 whitespace-pre-line">
+
+                    {{-- Mensaje --}}
+                    <div class="text-gray-700 whitespace-pre-line mb-4">
                         {{ $consulta->mensaje }}
                     </div>
+
+                    {{-- Si ya fue respondida, mostrar la respuesta --}}
+                    @if($consulta->estado == 'Respondido' && $consulta->respuesta)
+                        <div class="bg-green-50 border border-green-200 rounded p-3 mb-4">
+                            <p class="text-sm text-green-800 font-semibold mb-1">Respuesta enviada:</p>
+                            <p class="text-sm text-green-700">{{ $consulta->respuesta }}</p>
+                        </div>
+                    @endif
+
+                    {{-- Formulario para responder --}}
+                    @if($consulta->estado != 'Respondido')
+                        <form action="{{ route('admin.consultas.responder', $consulta->id) }}" method="POST" class="mt-3">
+                            @csrf
+                            @method('PUT')
+                            <textarea name="respuesta" rows="2" required
+                                class="w-full border border-gray-300 rounded p-2 text-sm mb-2"
+                                placeholder="Escribí una nota interna o respuesta..."></textarea>
+                            <button type="submit" class="bg-gray-800 text-white text-sm px-4 py-2 rounded hover:bg-gray-700 transition">
+                                Marcar como Respondido
+                            </button>
+                        </form>
+                    @endif
+
                 </div>
             @endforeach
         </div>

@@ -42,6 +42,20 @@ class AdminController extends Controller
         return view('admin.usuarios', compact('usuarios'));
     }
 
+    public function responderConsulta(Request $request, $id)
+   {
+    if (!auth()->check() || auth()->user()->rol !== 'admin') {
+        return redirect('/')->with('error', 'No tienes acceso.');
+    }
+
+    $consulta = Contacto::findOrFail($id);
+    $consulta->respuesta = $request->input('respuesta');
+    $consulta->estado = 'Respondido';
+    $consulta->save();
+
+    return redirect()->back()->with('success_message', 'Consulta marcada como respondida.');
+  }
+
     // 4. Visualizar Consultas del Formulario de Contacto
     public function consultas()
     {

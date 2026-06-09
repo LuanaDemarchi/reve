@@ -13,4 +13,9 @@ class Venta extends Model
         'direccion',
         'telefono',
     ];
+
+    public function cliente()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'cliente_id');
+    }
 }
