@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductoRequest;
 
 class ProductoController extends Controller
 {
@@ -19,41 +20,46 @@ class ProductoController extends Controller
         return view('admin.productos.create');
     }
 
-    public function store(Request $request)
+ public function store(ProductoRequest $request)
 {
+
     $producto = new Producto();
+
+
     $producto->nombre = $request->nombre;
-    $producto->descripcion = $request->descripcion ?? 'Sin descripción'; // Si llega vacío le pone un texto
+    $producto->descripcion = $request->descripcion;
     $producto->precio = $request->precio;
     $producto->stock = $request->stock;
-    $producto->activo = true;
+    $producto->categoria = $request->categoria;
+    $producto->activo = $request->activo ?? 0;
 
-    // 💡 SOLUCIÓN AL ERROR DE LA FOTO:
-    // Si el formulario no manda categoría, le asignamos 'roll' por defecto para que no sea NULL
-    if ($request->has('categoria') && !empty($request->categoria)) {
-        $producto->categoria = strtolower($request->categoria); // Lo pasa a minúscula ('roll', 'cookie', 'torta')
-    } else {
-        $producto->categoria = 'roll'; 
+
+
+    // GUARDAR IMAGEN EN STORAGE
+
+    if($request->hasFile('imagen')){
+
+        $ruta = $request->file('imagen')
+        ->store('productos','public');
+
+        $producto->url_imagen = $ruta;
+
     }
 
-    // Solución para la imagen
-    if ($request->has('url_imagen')) {
-        $producto->url_imagen = $request->url_imagen;
-    } elseif ($request->has('imagen')) {
-        $producto->url_imagen = $request->imagen;
-    }
 
     $producto->save();
 
-    return redirect('/admin/productos');
-}
 
+    return redirect('/admin/productos')
+    ->with('success','Producto creado correctamente');
+
+}
     public function edit(Producto $producto)
     {
         return view('admin.productos.edit', compact('producto'));
     }
 
-    public function update(Request $request, Producto $producto)
+   public function update(ProductoRequest $request, Producto $producto)
 {
     $producto->nombre = $request->nombre;
     $producto->descripcion = $request->descripcion;
@@ -62,9 +68,14 @@ class ProductoController extends Controller
     $producto->categoria = $request->categoria;
     $producto->activo = $request->activo;
 
-    if ($request->filled('url_imagen')) {
-        $producto->url_imagen = $request->url_imagen;
-    }
+    if($request->hasFile('imagen')){
+
+    $ruta = $request->file('imagen')
+        ->store('productos','public');
+
+    $producto->url_imagen = $ruta;
+
+}
 
     $producto->save();
 

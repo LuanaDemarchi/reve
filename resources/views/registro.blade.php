@@ -43,6 +43,25 @@ Crear Cuenta
 </div>
 
 <form method="POST" action="/registro">
+    @if($errors->any())
+
+<div class="alert alert-danger">
+
+<ul class="mb-0">
+
+@foreach($errors->all() as $error)
+
+<li>
+{{ $error }}
+</li>
+
+@endforeach
+
+</ul>
+
+</div>
+
+@endif
 
 @csrf
 
@@ -53,7 +72,15 @@ Crear Cuenta
 <input
 type="text"
 name="name"
-class="form-control">
+class="form-control"
+value="{{ old('name') }}">
+
+
+@error('name')
+<div class="text-danger mt-1">
+    {{ $message }}
+</div>
+@enderror
 
 </div>
 
@@ -64,7 +91,15 @@ class="form-control">
 <input
 type="email"
 name="email"
-class="form-control">
+class="form-control"
+value="{{ old('email') }}">
+
+
+@error('email')
+<div class="text-danger mt-1">
+    {{ $message }}
+</div>
+@enderror
 
 </div>
 
@@ -77,6 +112,12 @@ type="password"
 name="password"
 class="form-control">
 
+@error('password')
+<div class="text-danger mt-1">
+    {{ $message }}
+</div>
+@enderror
+
 </div>
 
 <div class="mb-4">
@@ -87,6 +128,13 @@ class="form-control">
 type="password"
 name="password_confirmation"
 class="form-control">
+
+
+@error('password_confirmation')
+<div class="text-danger mt-1">
+    {{ $message }}
+</div>
+@enderror
 
 </div>
 

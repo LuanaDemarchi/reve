@@ -17,19 +17,43 @@ class AuthController extends Controller
     }
 
     // Procesa el inicio de sesión
-    public function login(Request $request) {
-        $credenciales = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+    public function login(Request $request)
+{
+    $credenciales = $request->validate([
+        'email' => [
+            'required',
+            'email'
+        ],
+        'password' => [
+            'required',
+            'min:6'
+        ],
+    ], [
 
-        if (Auth::attempt($credenciales)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/'); // Te manda al inicio
-        }
+        'email.required' => 'El email es obligatorio.',
+        'email.email' => 'Ingresá un email válido.',
 
-        return back()->withErrors(['email' => 'El email o la contraseña no coinciden.']);
+        'password.required' => 'La contraseña es obligatoria.',
+        'password.min' => 'La contraseña debe tener mínimo 6 caracteres.',
+
+    ]);
+
+
+    if (Auth::attempt($credenciales)) {
+
+        $request->session()->regenerate();
+
+        return redirect()->intended('/');
+
     }
+
+
+    return back()
+        ->withInput()
+        ->withErrors([
+            'email' => 'El email o la contraseña no coinciden.'
+        ]);
+}
 
     // Muestra la vista de Registro
     public function showRegister() {
@@ -39,11 +63,38 @@ class AuthController extends Controller
     // Procesa el formulario y lo mete físicamente en tu base de datos
     public function register(Request $request) {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
 
+    'name' => [
+        'required',
+        'string',
+        'max:255'
+    ],
+
+    'email' => [
+        'required',
+        'email',
+        'unique:users'
+    ],
+
+    'password' => [
+        'required',
+        'min:6',
+        'confirmed'
+    ],
+
+], [
+
+    'name.required' => 'El nombre es obligatorio.',
+
+    'email.required' => 'El email es obligatorio.',
+    'email.email' => 'Ingresá un email válido.',
+    'email.unique' => 'Este email ya está registrado.',
+
+    'password.required' => 'La contraseña es obligatoria.',
+    'password.min' => 'La contraseña debe tener mínimo 6 caracteres.',
+    'password.confirmed' => 'Las contraseñas no coinciden.'
+
+]);
         // Guarda el usuario en la tabla que tenés en pantalla
         User::create([
             'name' => $request->name,

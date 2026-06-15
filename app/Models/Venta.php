@@ -14,8 +14,15 @@ class Venta extends Model
         'telefono',
     ];
 
+
     public function cliente()
     {
-        return $this->belongsTo(\App\Models\User::class, 'cliente_id');
+        return $this->belongsTo(User::class, 'cliente_id');
+    }
+
+
+    public function detalles()
+    {
+        return $this->hasMany(DetalleVenta::class);
     }
 }

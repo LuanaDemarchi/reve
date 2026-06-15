@@ -8,11 +8,17 @@ use Illuminate\Http\Request;
 class VentaController extends Controller
 {
     public function index()
-    {
-        $ventas = Venta::with('cliente')->orderBy('created_at', 'desc')->get();
+{
+    $ventas = Venta::with([
+        'cliente',
+        'detalles.producto'
+    ])
+    ->orderBy('created_at','desc')
+    ->get();
 
-        return view('admin.ventas.index', compact('ventas'));
-    }
+
+    return view('admin.ventas.index', compact('ventas'));
+}
 
     public function cambiarEstado(Request $request, $id)
     {

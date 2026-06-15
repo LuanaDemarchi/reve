@@ -5,8 +5,25 @@
 <div class="container" style="margin-top:220px; max-width:700px;">
 
     <h1 class="mb-4">Editar Producto</h1>
+    @if($errors->any())
 
-    <form action="/admin/productos/{{ $producto->id }}" method="POST">
+<div class="alert alert-danger">
+
+<ul>
+
+@foreach($errors->all() as $error)
+
+<li>{{ $error }}</li>
+
+@endforeach
+
+</ul>
+
+</div>
+
+@endif
+
+    <form action="/admin/productos/{{ $producto->id }}" method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -78,14 +95,28 @@
         </div>
 
         <div class="mb-3">
-            <label>URL Imagen</label>
 
-            <input
-                type="text"
-                name="url_imagen"
-                class="form-control"
-                value="{{ $producto->url_imagen }}">
-        </div>
+<label>
+Imagen del producto
+</label>
+
+<input
+type="file"
+name="imagen"
+class="form-control">
+
+
+@if($producto->url_imagen)
+
+<img 
+src="{{ asset('storage/'.$producto->url_imagen) }}"
+width="120"
+class="mt-3 rounded">
+
+@endif
+
+
+</div>
 
         <div class="mb-3">
             <label>Activo</label>

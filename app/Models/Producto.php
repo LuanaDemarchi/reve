@@ -18,4 +18,10 @@ class Producto extends Model
         'stock' => 'integer',
         'activo' => 'boolean',
     ];
+
+public function detallesVenta()
+{
+    return $this->hasMany(DetalleVenta::class);
 }
+}
+

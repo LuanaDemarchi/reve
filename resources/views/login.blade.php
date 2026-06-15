@@ -41,6 +41,21 @@ Bienvenida
 </div>
 
 <form method="POST" action="/login">
+    @if($errors->any())
+
+<div class="alert alert-danger">
+
+@foreach($errors->all() as $error)
+
+<p class="mb-0">
+{{ $error }}
+</p>
+
+@endforeach
+
+</div>
+
+@endif
 
 @csrf
 
@@ -53,7 +68,15 @@ Email
 <input
 type="email"
 name="email"
-class="form-control">
+class="form-control"
+value="{{ old('email') }}">
+
+
+@error('email')
+<div class="text-danger mt-2">
+    {{ $message }}
+</div>
+@enderror
 
 </div>
 
@@ -62,11 +85,17 @@ class="form-control">
 <label style="margin-bottom:8px;">
 Contraseña
 </label>
-
 <input
 type="password"
 name="password"
 class="form-control">
+
+
+@error('password')
+<div class="text-danger mt-2">
+    {{ $message }}
+</div>
+@enderror
 
 </div>
 
