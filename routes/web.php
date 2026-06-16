@@ -62,3 +62,6 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/admin/ventas', [VentaController::class, 'index']);
 Route::put('/admin/ventas/{id}/estado', [VentaController::class, 'cambiarEstado']);
 Route::put('/admin/consultas/{id}/responder', [\App\Http\Controllers\AdminController::class, 'responderConsulta'])->name('admin.consultas.responder');
+Route::get('/mis-compras', [CarritoController::class, 'misCompras'])->name('mis.compras');
+// Ruta para la sección de novedades destacadas
+Route::get('/novedades', [ProductoController::class, 'novedades'])->name('productos.novedades');

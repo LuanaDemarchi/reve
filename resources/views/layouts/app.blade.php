@@ -32,21 +32,17 @@
 
             <a href="/">Inicio</a>
             <a href="/productos">Productos</a>
+            <a href="{{ route('productos.novedades') }}">Novedades</a>
             <a href="/quienes_somos">Quiénes Somos</a>
             <a href="/informacion">Información</a>
             <a href="/contacto">Contacto</a>
+            <a href="{{ route('productos.novedades') }}">Productos destacados</a>
 
-            <a href="/carrito">
-                Mi Carrito
-            </a>
+            <a href="/carrito">Mi Carrito</a>
 
-            <a href="{{ route('registro') }}">
-                Registrarse
-            </a>
+            <a href="{{ route('registro') }}">Registrarse</a>
 
-            <a href="{{ route('login') }}">
-                Iniciar Sesión
-            </a>
+            <a href="{{ route('login') }}">Iniciar Sesión</a>
 
         @endguest
 
@@ -57,25 +53,11 @@
             {{-- ADMIN --}}
             @if(auth()->user()->rol === 'admin')
 
-                <a href="/admin/productos">
-                    Catálogo
-                </a>
-
-                <a href="/admin/productos/create">
-                    Agregar Producto
-                </a>
-
-                <a href="/admin/ventas">
-                    Ventas
-                </a>
-
-                <a href="/admin/usuarios">
-                    Usuarios
-                </a>
-
-                <a href="/admin/consultas">
-                    Consultas
-                </a>
+                <a href="/admin/productos">Catálogo</a>
+                <a href="/admin/productos/create">Agregar Producto</a>
+                <a href="/admin/ventas">Ventas</a>
+                <a href="/admin/usuarios">Usuarios</a>
+                <a href="/admin/consultas">Consultas</a>
 
                 <span style="color:#666;padding:0 10px;">
                     {{ auth()->user()->name }}
@@ -84,7 +66,7 @@
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
-                    Salir
+                     Salir
                 </a>
 
             @else
@@ -92,13 +74,14 @@
                 {{-- CLIENTE --}}
                 <a href="/">Inicio</a>
                 <a href="/productos">Productos</a>
+                <a href="{{ route('productos.novedades') }}">Productos destacados</a>
                 <a href="/quienes_somos">Quiénes Somos</a>
                 <a href="/informacion">Información</a>
                 <a href="/contacto">Contacto</a>
 
-                <a href="/carrito">
-                    Mi Carrito
-                </a>
+                <a href="/carrito">Mi Carrito</a>
+
+                <a href="{{ route('mis.compras') }}">Mis Compras 🎂</a>
 
                 <span style="color:#666;padding:0 10px;">
                     {{ auth()->user()->name }}
@@ -107,7 +90,7 @@
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
-                    Salir
+                     Salir
                 </a>
 
             @endif
@@ -127,7 +110,6 @@
 
         <div class="footer-col">
             <h3>ReVé</h3>
-
             <a href="/quienes_somos">Quiénes Somos</a>
             <a href="/productos">Productos</a>
             <a href="/informacion">Información</a>
@@ -135,26 +117,17 @@
 
         <div class="footer-col">
             <h3>Información</h3>
-
             <a href="/contacto">Contacto</a>
+            <a href="{{ route('productos.novedades') }}" style="font-weight: 500;">Productos Destacados</a>
             <a href="/terminos">Términos y Usos</a>
             <a href="/terminos">Políticas de Privacidad</a>
         </div>
 
         <div class="footer-col">
             <h3>Redes</h3>
-
-            <a href="https://www.instagram.com/revepatissiere?igsh=ODF1dDg2dTlzYm5h&utm_source=qr">
-                Instagram
-            </a>
-
-            <a href="/contacto">
-                Whatsapp
-            </a>
-
-            <a href="/contacto">
-                Correo
-            </a>
+            <a href="https://www.instagram.com/revepatissiere?igsh=ODF1dDg2dTlzYm5h&utm_source=qr">Instagram</a>
+            <a href="/contacto">Whatsapp</a>
+            <a href="/contacto">Correo</a>
         </div>
 
     </div>

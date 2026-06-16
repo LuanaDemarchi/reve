@@ -12,7 +12,12 @@
     <div class="contenido" style="position: relative; z-index: 2;">
         <h1>ReVe</h1>
         <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
-            <a href="#" class="btn-pedido">Pedido</a>
+            <a href="/productos" class="btn-pedido">Pedido</a>
+            @auth
+                @if(auth()->user()->rol !== 'admin')
+                    <a href="{{ route('mis.compras') }}" class="btn-pedido" style="background-color: #8c7a6b; border-color: #8c7a6b;">Mis Compras 🎂</a>
+                @endif
+            @endauth
             @guest
                 <a href="{{ route('registro') }}" class="btn-pedido" style="background-color: #d4a373; border-color: #d4a373;">Registrarse</a>
                 <a href="{{ route('login') }}" class="btn-pedido" style="background-color: transparent; border: 2px solid #ffffff;">Iniciar Sesión</a>
@@ -32,7 +37,6 @@
 
 <div class="carousel-inner">
 
-<!-- Slide 1 -->
 <div class="carousel-item active">
 <div class="productos-slide-grid">
 
@@ -54,7 +58,6 @@
 </div>
 </div>
 
-<!-- Slide 2 -->
 <div class="carousel-item">
 <div class="productos-slide-grid">
 
@@ -101,7 +104,6 @@
         </a>
     </div>  
 </section>
-
 
 <script src="{{ asset('js/slider.js') }}"></script>
 

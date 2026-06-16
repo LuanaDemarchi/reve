@@ -31,7 +31,7 @@ class CarritoController extends Controller
         return view('carrito.index', compact('carrito', 'total'));
     }
 
-   public function agregar(Request $request, $id)
+  public function agregar(Request $request, $id)
 {
     $producto = Producto::find($id);
     if (!$producto) return redirect()->back()->with('error', 'Producto no encontrado.');
@@ -51,10 +51,11 @@ class CarritoController extends Controller
         $carrito[$id]['cantidad']++;
     } else {
         $carrito[$id] = [
-            "nombre"   => $producto->nombre,
-            "cantidad" => 1,
-            "precio"   => $producto->precio,
-            "imagen"   => $producto->url_imagen
+            "nombre"    => $producto->nombre,
+            "cantidad"  => 1,
+            "precio"    => $producto->precio,
+            "imagen"    => $producto->url_imagen,
+            "categoria" => $producto->categoria
         ];
     }
 
@@ -74,21 +75,35 @@ class CarritoController extends Controller
     return redirect()->route('carrito.index')->with('success', 'Producto eliminado del carrito.');
 }
 
-    // Al tocar "Confirmar Compra" en el carrito
-    public function confirmar()
-    {
-        $carrito = session()->get('carrito', []);
-        if (empty($carrito)) {
-            return redirect()->route('carrito.index')->with('error', 'El carrito está vacío.');
-        }
-
-        $total = 0;
-        foreach ($carrito as $item) {
-            $total += $item['precio'] * $item['cantidad'];
-        }
-
-        return view('carrito.checkout', compact('carrito', 'total'));
+   public function confirmar()
+{
+    $carrito = session()->get('carrito', []);
+    if (empty($carrito)) {
+        return redirect()->route('carrito.index')->with('error', 'El carrito está vacío.');
     }
+
+    // Verificar si el pedido califica para envío
+    $tieneTorta = false;
+    $totalRollsCookies = 0;
+
+    foreach ($carrito as $item) {
+        if (($item['categoria'] ?? '') === 'torta') {
+            $tieneTorta = true;
+        }
+        if (in_array($item['categoria'] ?? '', ['roll', 'cookie'])) {
+            $totalRollsCookies += $item['cantidad'];
+        }
+    }
+
+    $calificaEnvio = $tieneTorta || $totalRollsCookies >= 6;
+
+    $total = 0;
+    foreach ($carrito as $item) {
+        $total += $item['precio'] * $item['cantidad'];
+    }
+
+    return view('carrito.checkout', compact('carrito', 'total', 'calificaEnvio'));
+}
 
     // Al enviar el formulario de datos, procesamos la compra
     public function procesar(Request $request)
@@ -160,4 +175,18 @@ class CarritoController extends Controller
 
         return view('carrito.ticket', compact('ticket'));
     }
+
+    public function misCompras()
+{
+    $ventas = Venta::where('cliente_id', auth()->id())
+                   ->with('detalles.producto')
+                   ->orderBy('created_at', 'desc')
+                   ->get();
+
+    return view('carrito.mis_compras', compact('ventas'));
+}
+
+ 
+
+
 }
